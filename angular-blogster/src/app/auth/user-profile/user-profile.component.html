@@ -1,0 +1,29 @@
+<div class="container">
+  <div>
+    <h4>Welcome <b style="color: #ff854a;">{{name}}</b>. </h4><br /> You have posted <b>{{postLength}}</b> time(s) and commented
+    <b>{{commentLength}}</b> time(s).
+    You can check your post and comment history below.
+  </div>
+  <hr />
+  <div>
+    <h4>Your Posts</h4>
+  </div>
+  <!-- <app-post-tile [posts]="posts"></app-post-tile> -->
+  <app-post-tile></app-post-tile>
+  <hr />
+  <div>
+    <h4>Your Comments</h4>
+  </div>
+  <div *ngFor="let comment of comments">
+    <div class="comment row" style="padding-left: 20px;">
+      <div class="username">
+        <a routerLink="/user/comment.username" style="color: #ff854a;">{{comment.userName}}:</a>
+      </div>
+      <div class="col-md-6">
+        <p>{{comment.text}}</p>
+        <p>{{comment.duration}}</p>
+      </div>
+    </div>
+    <hr />
+  </div>
+</div>
