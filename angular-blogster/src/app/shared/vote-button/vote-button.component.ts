@@ -56,8 +56,18 @@ export class VoteButtonComponent implements OnInit {
     this.voteService.vote(this.votePayload).subscribe(() => {
       this.updateVoteDetails();
     }, error => {
-      let voteTypeName = this.votePayload.voteType == VoteType.UPVOTE ? "upvote" : "downvote";
-      this.toastr.error("You have already " + voteTypeName + " for this post");
+      let message: string;
+      let voteTypeName: string;
+      if (!this.authService.isLoggedIn()) {
+        message = "You have not logged In, login to vote";
+        // this.toastr.error("")
+
+      } else {
+        voteTypeName = this.votePayload.voteType == VoteType.UPVOTE ? "upvote" : "downvote";
+        message = "You have already " + voteTypeName + " for this post";
+        // this.toastr.error("You have already " + voteTypeName + " for this post");
+      }
+      this.toastr.error(message);
       // this.toastr.error(error.error.message);
       throwError(error);
     });

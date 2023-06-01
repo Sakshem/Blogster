@@ -5,14 +5,14 @@
         <form class="post-form" [formGroup]="createPostForm" (ngSubmit)="createPost()">
           <div class="form-group">
             <div class="create-post-heading">Create Post</div>
-            <hr />
+            <hr/>
             <input type="text" [formControlName]="'postName'" class="form-control" style="margin-top: 5px"
               placeholder="Title">
   
             <input type="text" class="form-control" [formControlName]="'url'" style="margin-top: 5px" placeholder="URL">
   
             <select class="form-control" style="margin-top: 10px" [formControlName]="'subredditName'">
-              <option value="" selected disabled>Select Subreddit</option>
+              <option value="" selected disabled>Select Category</option>
               <option *ngFor="let subreddit of subreddits">{{subreddit.name}}</option>
             </select>
   
